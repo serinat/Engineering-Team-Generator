@@ -1,4 +1,5 @@
-module.exports.generateHTML = function generateHTML(data) {
+//module.exports.generateHTML = function generateHTML(data) {
+function generateHTML(data) {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -218,5 +219,7 @@ module.exports.generateHTML = function generateHTML(data) {
     </main>
 </body>
 
-</html>`
-};
+</html>`;
+}
+//};
+module.exports = generateHTML;
