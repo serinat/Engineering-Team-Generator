@@ -42,7 +42,7 @@ function init() {
 };
 
 function writeToFile() {
-    const html = generateHTML();
+    const generateHTML = generateHTML();
     writeFileAsync("index.html", html);
 };
 
