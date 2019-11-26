@@ -15,25 +15,25 @@ function init() {
         .then(function (input) {
 
             if (input.title === "Employee") {
-                var object = new Employee(input.name, input.id, input.email, input.officeNumber);
+                var Employee = new Employee(input.name, input.id, input.email, input.officeNumber);
                 fs.appendFile('./index.html', html, function (err) {
                     if (err) throw err;
                 });
             
             if (input.title === "Manager") {
-                var object = new Manager(input.name, input.id, input.email, input.officeNumber);
+                var Manager = new Manager(input.name, input.id, input.email, input.officeNumber);
                 fs.appendFile('./index.html', html, function (err) {
                     if (err) throw err;
                 });
                
             } else if (input.title === "Engineer") {
-                var object = new Engineer(input.name, input.id, input.email, input.github);
+                var Engineer = new Engineer(input.name, input.id, input.email, input.github);
                 fs.appendFile('./index.html', html, function (err) {
                     if (err) throw err;
                 });
                 
             } else if (input.title === "Intern") {
-                var object = new Intern(input.name, input.id, input.email, input.school);
+                var Intern = new Intern(input.name, input.id, input.email, input.school);
                 fs.appendFile('./index.html', html, function (err) {
                     if (err) throw err;
                 });
