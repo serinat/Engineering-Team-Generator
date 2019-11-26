@@ -1,5 +1,6 @@
-function generateHTML(data) {
-    return `<!DOCTYPE html>
+module.exports.generateHTML = function generateHTML(data) {
+    return `
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -160,18 +161,62 @@ function generateHTML(data) {
             }
         </style>
         
-        <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0">
-            <h1 class="col text-center" id="header">My Team</h1>
-        </nav>
-    
-        <div class="wrapper">
-    
-            <div class="main">
-    
-                <div class="container">
-    
-                    <div class=" row">
-    `;
-}
+        <body>
+    <header>
+        <h1>My Team</h1>
+    </header>
 
-module.exports = generateHTML;
+    <main>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Manager
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: <span id="id"></span></li>
+                <li class="list-group-item">Email: <span id="email"></spand>
+                </li>
+                <li class="list-group-item">Office Number: <span id="officeNumber"></span></li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Engineer
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: <span id="id"></span></li>
+                <li class="list-group-item">Email: <span id="email"></spand>
+                </li>
+                <li class="list-group-item">Github: <span id="github"></span></li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Engineer
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: <span id="id"></span></li>
+                <li class="list-group-item">Email: <span id="email"></spand>
+                </li>
+                <li class="list-group-item">Github: <span id="github"></span></li>
+            </ul>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                Intern
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: <span id="id"></span></li>
+                <li class="list-group-item">Email: <span id="email"></spand>
+                </li>
+                <li class="list-group-item">School: <span id="school"></span></li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>`
+};
