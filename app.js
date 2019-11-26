@@ -1,78 +1,42 @@
-let Employee = require("./lib/Employee");
-let Engineer = require("./lib/Engineer");
-let Intern = require("./lib/Intern");
-let Manager = require("./lib/Manager");
-let questions = require("./lib/questions");
-let inquirer = require("inquirer")
-let fs = require("fs");
-let util = require("util");
+const inquirer = require("inquirer");
+const fs = require("fs");
+const generateHTML = require("./generateHTML");
+const util = require("util");
+const writeFileAsync = util.promisify(fs.writeFile);
+const Employee = require("./lib/Employee");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
-const readFileSync = util.promisify(fs.readFile);
-const writeFileSync = util.promisify(fs.writeFile);
-
-let teamRoster = [];
-
-promptUser()
-//console.log(questions)
-function promptUser() {
-    inquirer.prompt(questions.confirmStart).then(function ({ start }) {
-        //console.log(start)
-        if (start === false) {
-            return
-        }
-        inquirer.prompt(questions.managerQuestions).then(function ({ manager, managerID, managerEmail, managerNum }) {
-            //console.log(manager, managerID, managerEmail, managerNum)
-            let managerObj = new Manager(manager, managerID, managerEmail, managerNum)
-            console.log(managerObj)
-            teamRoster.push(managerObj);
-            buildTeam();
-        }, function (err) {
-            console.log(err);
+function init() {
+    inquirer
+        .prompt(questions)
+        .then(function (input) {
+            // if user selects Manager then use the Manager html
+            if (input.title === "Manager") {
+                var object = new Manager(input.name, input.id, input.email, input.officeNumber);
+                var html = managerCard(object);
+                fs.appendFile('./index.html', html, function (err) {
+                    if (err) throw err;
+                });
+                // if user selects Engineer then use the Engineer html
+            } else if (input.title === "Engineer") {
+                var object = new Engineer(input.name, input.id, input.email, input.github);
+                var html = engineerCard(object);
+                fs.appendFile('./index.html', html, function (err) {
+                    if (err) throw err;
+                });
+                // if user selects Intern then use the Intern html
+            } else if (input.title === "Intern") {
+                var object = new Intern(input.name, input.id, input.email, input.school);
+                var html = internCard(object);
+                fs.appendFile('./index.html', html, function (err) {
+                    if (err) throw err;
+                });
+            }
+            if (input.repeat === 'Yes') {
+                init();
+            }
+            return;
         })
-    })
-}
-
-function buildTeam() {
-    inquirer.prompt(questions.employeePick).then(function (res) {
-        switch (res.select) {
-            case "Engineer":
-                buildEngineer();
-                break;
-            case "Intern":
-                buildIntern();
-                break;
-            default:
-                buildHTML();
-                break;
-        }
-    }, function (err) {
-        console.log(err)
-    })
-}
-
-function buildEngineer() {
-    inquirer.prompt(questions.engineerQuestions).then(function ({ engineer, engineerID, engineerEmail, engineerGitHub }) {
-        let engineerObj = new Engineer(engineer, engineerID, engineerEmail, engineerGitHub)
-        console.log(engineerObj)
-        teamRoster.push(engineerObj);
-        buildTeam();
-    }, function (err) {
-        console.log(err);
-    })
-}
-
-function buildIntern() {
-    inquirer.prompt(questions.internQuestions).then(function ({ intern, internID, internEmail, internSchool }) {
-        let internObj = new Intern(intern, internID, internEmail, internSchool)
-        console.log(internObj)
-        teamRoster.push(internObj);
-        buildTeam();
-    }, function (err) {
-        console.log(err);
-    })
-}
-
-function buildHTML() {
-    let html = fs.readFileSync("./templates/main.html", "utf8");
-    let 
-}        
+};
