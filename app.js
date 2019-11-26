@@ -43,7 +43,7 @@ function init() {
             }
             return;
         }
-    }    
+    })    
 };
 
 function writeToFile() {
