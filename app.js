@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateHTML = require("./generateHTML");
+const generateHTML = require("./generateHTML.js").generateHTML;
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 const Employee = require("./lib/Employee");
@@ -40,3 +40,12 @@ function init() {
             return;
         })
 };
+
+function writeToFile() {
+    const html = generateHTML();
+    writeFileAsync("index.html", html);
+};
+
+writeToFile();
+
+init();
