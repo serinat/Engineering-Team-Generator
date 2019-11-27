@@ -1,3 +1,5 @@
 ### Engineering-Team-Generator
 
 - The objective of this homework was to create a command line application that creates a team roster consisting our desired number of engineers and interns under one manager and display its properties. The process involved running npm install and node app.js to prompt the user to pick a role and provide the ID, email and github for the engineer and ID, email and school of intern, and finally to display the team roster on an html page. I was able to develop the file structure including node_modules, package json, JS files for employee, manager, engineer & intern, and the main, manager, engineer & intern html templates. Unforunately, I wasn't able to get my application to work perfectly. At one point I was able to retrieve all of the data, but for some reason the ID doesn't always show up. In addition, I did not have enough time to work on the styling, my plan is to finish during this Thanksgiving holiday break.
+
+Update: I fixed syntax errors, all data now appends to html. Just need to work on styling!
