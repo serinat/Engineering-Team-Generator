@@ -1,9 +1,9 @@
 let inquirer = require("inquirer")
 let fs = require("fs");
 let util = require("util");
-const writeFileSync = util.promisify(fs.writeFile);
+const writeFileASync = util.promisify(fs.writeFile);
 const readFileSync = util.promisify(fs.readFile);
-let Employee = require("./lib/Employee");
+//let Employee = require("./lib/Employee");
 let Manager = require("./lib/Manager");
 let Engineer = require("./lib/Engineer");
 let Intern = require("./lib/Intern");
@@ -89,7 +89,7 @@ function addEmployeeHTML() {
         }
     } else {
         let html = fs.readFileSync("./templates/main.html", "utf8");
-        writeFileSync(`./output/${teamName}'s Team.html`, html).then(function () {
+        writeFileASync("./output/${teamName}'s Team.html", html).then(function () {
             readFileSync("./templates/main.html", "utf8").then(async function (html) {
                 let $main = cheerio.load(html);
                 $main("addEmployee").html("");
