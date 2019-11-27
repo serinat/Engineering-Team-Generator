@@ -20,7 +20,7 @@ promptUser()
 function promptUser() {
     inquirer.prompt(questions.managerQuestions).then(function (data) {
         teamName = data.teamName
-        let managerObject = new Manager(data.manager, data.managerID, data.managerEmail, data.managerOfficeNuber)
+        let managerObject = new Manager(data.manager, data.managerID, data.managerEmail, data.managerOfficeNumber)
         employeeObject.push(managerObject);
         buildTeam();
     }, function (err) {
