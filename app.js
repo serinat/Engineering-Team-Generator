@@ -93,7 +93,7 @@ function addEmployeeHTML() {
         writeFileSync(`./output/${teamName}'s Team.html`, html).then(function () {
             readFileSync("./templates/main.html", "utf8").then(async function (html) {
                 let $main = cheerio.load(html);
-                $main("addEmployee").html("");
+                $main("#addEmployee").html("");
                 writeFileSync("./templates/main.html", $main.html())
             });
         }, function (err) {
@@ -108,9 +108,9 @@ function addManagerHTML(person) {
     readFileSync("./templates/main.html", "utf8").then(function (data) {
         let $main = cheerio.load(data)
         $manager("#name").html(person.getName())
-        $manager("id").html(person.getID())
-        $manager("email").html(person.getEmail())
-        $manager("officeNumber").html(person.getOfficeNumber())
+        $manager("#id").html(person.getID())
+        $manager("#email").html(person.getEmail())
+        $manager("#officeNumber").html(person.getOfficeNumber())
         $main("#addEmployee").append($manager.html());
         writeFileSync("./templates/main.html", $main.html()).then(function () {
             addEmployeeHTML();
