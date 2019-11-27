@@ -144,7 +144,7 @@ function addInternHTML(person) {
     readFileSync("./templates/main.html", "utf8").then(function (data) {
         let $main = cheerio.load(data)
         $intern("#name").html(person.getName())
-        $intern("#id").html(person.getId())
+        $intern("#id").html(person.getID())
         $intern("#email").html(person.getEmail())
         $intern("#school").html(person.getSchool())
         $main("#addEmployee").append($intern.html());
