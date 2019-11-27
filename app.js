@@ -126,7 +126,7 @@ function addEngineerHTML(person) {
     readFileSync("./templates/main.html", "utf8").then(function (data) {
         let $main = cheerio.load(data)
         $engineer("#name").html(person.getName())
-        $engineer("#id").html(person.getId())
+        $engineer("#id").html(person.getID())
         $engineer("#email").html(person.getEmail())
         $engineer("#github").html(person.getGithub())
         $main("#addEmployee").append($engineer.html());
