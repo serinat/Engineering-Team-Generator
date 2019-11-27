@@ -80,7 +80,7 @@ function buildHTML() {
 function addEmployeeHTML() {
     if (i < employeeObject.length) {
         person = employeeObject[i++];
-        if person.getRole() === "Manager") {
+        if (person.getRole() === "Manager") {
             addManagerHTML(person)
         } else if (person.getRole() === "Engineer") {
             addEngineerHTML(person)
