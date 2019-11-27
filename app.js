@@ -1,4 +1,5 @@
 let inquirer = require("inquirer")
+let cheerio = require("cheerio")
 let fs = require("fs");
 let util = require("util");
 const writeFileSync = util.promisify(fs.writeFile);
